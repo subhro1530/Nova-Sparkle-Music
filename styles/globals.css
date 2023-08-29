@@ -1,0 +1,11 @@
+/* styles/globals.css */
+
+body {
+  font-family: "Ubuntu", sans-serif; /* Change font family */
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+/* Other global styles */
