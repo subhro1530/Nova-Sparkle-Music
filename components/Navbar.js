@@ -24,7 +24,7 @@ function Navbar() {
   return (
     <nav className={`${styles.navbar} ${navbarActive ? styles.active : ""}`}>
       <div className={styles.navbarLeft}>
-        <img src="full.png" alt="Your Logo" className={styles.logo} />{" "}
+        <Image src="full.png" alt="Your Logo" className={styles.logo} />{" "}
         {/* Replace with your logo image path */}
       </div>
       <div className={styles.navbarToggle} onClick={toggleNavbar}>
@@ -41,35 +41,35 @@ function Navbar() {
           }`}
         >
           <li className={styles.navLink}>
-            <a href="/">Home</a>
+            <Link href="/">Home</Link>
           </li>
           <li className={styles.navLink}>
-            <a href="/about">About</a>
+            <Link href="/about">About</Link>
           </li>
           <li className={styles.navLink}>
-            <a href="/tracks">Tracks</a>
+            <Link href="/tracks">Tracks</Link>
           </li>
           <li className={styles.navLink}>
-            <a href="/contact">Contact</a>
+            <Link href="/contact">Contact</Link>
           </li>
         </div>
       </div>
       <div className={styles.navbarRight}>
         <ul className={styles.socialLinks}>
           <li>
-            <a href="#">
+            <Link href="#">
               <i class="fab fa-facebook"></i>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#">
+            <Link href="#">
               <i class="fab fa-twitter"></i>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#">
+            <Link href="#">
               <i class="fab fa-instagram"></i>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
