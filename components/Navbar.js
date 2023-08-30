@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css"; // Import the styles from Home.module.css
+import Link from "next/link";
+import Image from "next/image";
 
 function Navbar() {
   const [navbarActive, setNavbarActive] = useState(false);
