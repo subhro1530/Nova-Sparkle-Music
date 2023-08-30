@@ -26,7 +26,13 @@ function Navbar() {
   return (
     <nav className={`${styles.navbar} ${navbarActive ? styles.active : ""}`}>
       <div className={styles.navbarLeft}>
-        <Image src="full.png" alt="Your Logo" className={styles.logo} />{" "}
+        <Image
+          src="/full.png"
+          alt="Your Logo"
+          className={styles.logo}
+          width={300}
+          height={50}
+        />{" "}
         {/* Replace with your logo image path */}
       </div>
       <div className={styles.navbarToggle} onClick={toggleNavbar}>
