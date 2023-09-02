@@ -134,6 +134,10 @@
     background-color: #000; /* Dark background color for mobile */
   }
 
+  .navbarLinks.close{
+    display: none;
+  }
+
   .navbarLeft,
   .navbarMiddle,
   .navbarRight {

@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import MusicSearch from "@/components/MusicSearch";
 
 function Home() {
   const [showLetters, setShowLetters] = useState([]);
@@ -203,6 +204,7 @@ function Home() {
           <p>Search, listen, and enjoy.</p>
         </div>
       </section>
+      <MusicSearch/>
       {/* Rest of your content */}
     </div>
   );

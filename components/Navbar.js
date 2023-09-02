@@ -20,7 +20,9 @@ function Navbar() {
   }, []);
 
   const toggleNavbar = () => {
-    setNavbarActive(!navbarActive);
+    if (window.innerWidth < 768) {
+      
+    }
   };
 
   return (
