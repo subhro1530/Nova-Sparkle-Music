@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
-import styles from "../styles/MusicSearch.module.css"; // Import your custom styles
+import axios from "axios";
+import MusicPlayer from "./MusicPlayer";
+import styles from "../styles/MusicSearch.module.css";
 
 function MusicSearch() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [selectedTrack, setSelectedTrack] = useState(null);
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
@@ -15,63 +17,62 @@ function MusicSearch() {
     if (searchQuery) {
       setLoading(true);
 
-      const apiKey = "AIzaSyBBP9Bj-3Fb8EImo1A7PwvBjdD3qFQvY4Q";
-      const apiUrl = `https://www.googleapis.com/youtube/v3/search?q=${searchQuery}&type=video&key=${apiKey}`;
+      const apiUrl = `https://itunes.apple.com/search?term=${searchQuery}&media=music&entity=song`;
 
       axios
         .get(apiUrl)
         .then((response) => {
-          const videoData = response.data.items.map((item) => ({
-            id: item.id.videoId,
-            title: item.snippet.title,
-          }));
-
-          setSearchResults(videoData);
+          setSearchResults(response.data.results);
           setLoading(false);
         })
         .catch((error) => {
-          console.error("Error fetching data from YouTube API:", error);
+          console.error("Error fetching data from iTunes API:", error);
           setLoading(false);
         });
     }
   }, [searchQuery]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Trigger the API request when the user submits the form
-    // You can do this by setting the searchQuery
+  const handleSelectTrack = (track) => {
+    setSelectedTrack({
+      title: track.trackName,
+      artist: track.artistName,
+      album: track.collectionName,
+      preview: track.previewUrl || null,
+      image: track.artworkUrl100, // Use a suitable size based on your preference
+    });
   };
 
   return (
-    <div
-      className={styles.musicSearchContainer}
-    >
-      <form className={styles.searchForm} onSubmit={handleSubmit}>
+    <div className={styles.musicSearchContainer}>
+      <form
+        className={styles.searchForm}
+        onSubmit={(event) => event.preventDefault()}
+      >
         <input
           type="text"
           placeholder="Search for a music..."
           value={searchQuery}
           onChange={handleInputChange}
         />
-        <button type="submit">Search</button>
       </form>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <ul className={styles.searchResults}>
-          {searchResults.map((result) => (
-            <li key={result.id}>
-              <a
-                href={`https://www.youtube.com/watch?v=${result.id}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {result.title}
-              </a>
-            </li>
+        <div className={styles.searchResults}>
+          {searchResults.map((track) => (
+            <div
+              key={track.trackId}
+              className={styles.musics}
+              onClick={() => handleSelectTrack(track)}
+            >
+              <div className={styles.title}>
+                {track.trackName} by {track.artistName}
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
+      <MusicPlayer currentTrack={selectedTrack} />
     </div>
   );
 }

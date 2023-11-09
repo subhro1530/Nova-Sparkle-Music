@@ -16,8 +16,17 @@
   text-align: center;
 }
 
+.musicSearchContainer h1 {
+  color: white;
+  font-size: 50px;
+  font-weight: 300;
+}
+
 .searchForm {
   margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .searchForm input[type="text"] {
@@ -35,48 +44,56 @@
 
 .searchForm button {
   padding: 10px 20px;
-  background-color: #ff0000; /* Your button background color */
+  background-color: #ff0000;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
+  margin-left: 10px;
 }
 
 .searchForm button:hover {
-  background-color: #cc0000; /* Hover background color */
+  background-color: #cc0000;
 }
 
-.searchResults ul {
-  list-style: none;
-  padding: 0;
+.searchResults {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.searchResults li {
-  margin-bottom: 10px;
+.musics {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 300px; /* Adjust as needed */
+  height: 300px; /* Adjust as needed */
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  margin: 10px;
+  transition: 0.2s ease-in-out transform;
+  cursor: pointer;
 }
 
-.searchResults a {
+.musics:hover {
+  transform: scale(1.1);
+  border: 2px solid #ff7474;
+  background-color: rgba(134, 0, 0, 0.703);
+}
+
+.title {
+  color: white;
   text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  font-size: 18px;
-  transition: color 0.3s ease;
+  font-size: 20px;
+  margin-top: 10px;
 }
 
-.searchResults a:hover {
-  color: #ff0000; /* Hover link color */
-}
-
-.searchResults p {
-  font-size: 18px;
-  font-weight: bold;
-  color: #eaeaea;
-  margin-top: 20px;
-  
-}
-
-.loading {
-  
+.musicImage {
+  width: 100%; /* Make the image fill its container */
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
